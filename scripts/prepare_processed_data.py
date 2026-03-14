@@ -7,7 +7,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from src.data.preprocess import preprocess_data
 from src.features.build_features import build_features
 
-RAW = r"C:\Users\uma21\Downloads\archive (1)\WA_Fn-UseC_-Telco-Customer-Churn.csv"
+RAW = r"C:\Users\uma21\OneDrive\Desktop\telco-churn-mlops\data\raw\WA_Fn-UseC_-Telco-Customer-Churn.csv"
 OUT = "data/processed/processed_telco_churn.csv"
 
 # Load raw
