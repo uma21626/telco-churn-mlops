@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/uma21/OneDrive/Desktop/telco-churn-mlops/mlruns/818038774037910443/3c65000d99e64a58a8e77ffabeee4b1b/artifacts
+end_time: 1773504203478
+entry_point_name: ''
+experiment_id: '818038774037910443'
+lifecycle_stage: active
+run_id: 3c65000d99e64a58a8e77ffabeee4b1b
+run_name: mercurial-fish-386
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1773504203386
+status: 4
+tags: []
+user_id: uma21
