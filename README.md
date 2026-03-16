@@ -1,10 +1,10 @@
-# 📡 Telco Customer Churn Prediction — End-to-End MLOps Project
+# Telco Customer Churn Prediction — End-to-End MLOps Project
 
 A production-ready Machine Learning system that predicts customer churn for telecom companies. Built with a full MLOps pipeline including data validation, feature engineering, model training, experiment tracking, REST API serving, Docker containerization, CI/CD, and AWS deployment.
 
 ---
 
-## 🎯 Purpose
+## Purpose
 
 Build and ship a full machine-learning solution for predicting customer churn in a telecom setting — from data prep and modeling to an API + web UI deployed on AWS.
 
@@ -17,7 +17,7 @@ Build and ship a full machine-learning solution for predicting customer churn in
 
 ---
 
-## 🏗️ Project Architecture
+## Project Architecture
 
 ```
 telco-churn-mlops/
@@ -50,7 +50,7 @@ telco-churn-mlops/
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Category | Tools |
 |----------|-------|
@@ -67,7 +67,7 @@ telco-churn-mlops/
 
 ---
 
-## 📦 Dataset
+## Dataset
 
 This project uses the [Telco Customer Churn dataset](https://www.kaggle.com/datasets/blastchar/telco-customer-churn) from Kaggle.
 
@@ -81,7 +81,7 @@ This project uses the [Telco Customer Churn dataset](https://www.kaggle.com/data
 
 ---
 
-## ⚙️ Run Locally
+## Run Locally
 
 ### 1. Clone the repository
 ```bash
@@ -141,7 +141,7 @@ Then open:
 
 ---
 
-## 🐳 Run with Docker
+## Run with Docker
 
 ### Build the image
 ```bash
@@ -155,7 +155,7 @@ docker run -p 8000:8000 telco-churn-app
 
 ---
 
-## 🔌 API Usage
+## API Usage
 
 ### Health Check
 ```http
@@ -201,7 +201,7 @@ Content-Type: application/json
 
 ---
 
-## 📊 Model Performance
+## Model Performance
 
 The XGBoost model was trained and tracked using MLflow.
 
@@ -223,7 +223,7 @@ Open: `http://localhost:5000`
 
 ---
 
-## 🚀 Deployment — AWS ECS Fargate
+## Deployment — AWS ECS Fargate
 
 ### Architecture
 
@@ -260,7 +260,7 @@ CloudWatch Logs
 
 ---
 
-## 🔄 CI/CD Pipeline
+## CI/CD Pipeline
 
 GitHub Actions workflow (`.github/workflows/`):
 
@@ -270,7 +270,7 @@ GitHub Actions workflow (`.github/workflows/`):
 
 ---
 
-## 🔍 Key Design Decisions
+## Key Design Decisions
 
 - **Training/Serving Consistency** — The same feature transformations used during training are applied at inference time via `_serve_transform()` to prevent train/serve skew.
 - **Docker-ready paths** — `inference.py` auto-detects whether it's running in Docker (`/app/model`) or locally (`mlruns/`) and adjusts paths accordingly.
@@ -279,7 +279,7 @@ GitHub Actions workflow (`.github/workflows/`):
 
 ---
 
-## 🐛 Roadblocks & How We Solved Them
+## Roadblocks & How We Solved Them
 
 ### Unhealthy targets behind ALB
 - **Cause:** App didn't respond at the health-check path; listener/target port mismatches.
@@ -312,15 +312,3 @@ GitHub Actions workflow (`.github/workflows/`):
 ### Windows-only packages in requirements.txt
 - **Cause:** `pywin32` and `audioop-lts` are Windows-only and fail in Linux containers.
 - **Fix:** Removed Windows-only packages from `requirements.txt` before building the Docker image.
-
----
-
-## 👤 Author
-
-**Uma** — [github.com/uma21626](https://github.com/uma21626)
-
----
-
-## 📄 License
-
-This project is for educational purposes. Dataset credit: [IBM/Kaggle Telco Customer Churn](https://www.kaggle.com/datasets/blastchar/telco-customer-churn).
