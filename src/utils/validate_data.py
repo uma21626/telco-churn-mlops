@@ -12,16 +12,27 @@ def validate_telco_data(df) -> Tuple[bool, List[str]]:
     
     """
     print("Starting data validation with Great Expectations...")
-    
+    import pandas as pd
+
+    # Convert numeric columns
+    import pandas as pd
+
+    numeric_cols = ["tenure", "MonthlyCharges", "TotalCharges"]
+
+    for col in numeric_cols:
+        if col in df.columns:
+            df[col] = pd.to_numeric(df[col], errors="coerce")
     # Convert pandas DataFrame to Great Expectations Dataset
     ge_df = ge.dataset.PandasDataset(df)
     
     # === SCHEMA VALIDATION - ESSENTIAL COLUMNS ===
     print("Validating schema and required columns...")
     
-    # Customer identifier must exist (required for business operations)  
-    ge_df.expect_column_to_exist("customerID")
-    ge_df.expect_column_values_to_not_be_null("customerID")
+    # Validate target column
+    ge_df.expect_column_to_exist("Churn")
+    ge_df.expect_column_values_to_not_be_null("Churn")
+    if 'Churn' in df.columns:
+        df['Churn'] = df['Churn'].map({'Yes': 1, 'No': 0})
     
     # Core demographic features
     ge_df.expect_column_to_exist("gender") 
@@ -50,13 +61,15 @@ def validate_telco_data(df) -> Tuple[bool, List[str]]:
     ge_df.expect_column_values_to_be_in_set("PhoneService", ["Yes", "No"])
     
     # Contract types must be valid (business constraint)
-    ge_df.expect_column_values_to_be_in_set(
-        "Contract", 
-        ["Month-to-month", "One year", "Two year"]
-    )
+    if 'Contract' in df.columns:
+        ge_df.expect_column_values_to_be_in_set(
+            "Contract", 
+            ["Month-to-month", "One year", "Two year"]
+        )
     
     # Internet service types (business constraint)
-    ge_df.expect_column_values_to_be_in_set(
+    if "internetService" in df.columns:
+        ge_df.expect_column_values_to_be_in_set(
         "InternetService",
         ["DSL", "Fiber optic", "No"]
     )

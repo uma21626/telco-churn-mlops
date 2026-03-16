@@ -14,7 +14,7 @@ Architecture:
 from fastapi import FastAPI
 from pydantic import BaseModel
 import gradio as gr
-from src.serving.inference import predict  # Core ML inference logic
+from src.serving.model.inference import predict  # Core ML inference logic
 
 # Initialize FastAPI application
 app = FastAPI(

@@ -1,0 +1,14 @@
+@"
+.venv
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.git
+.gitignore
+notebooks
+.vscode
+.idea
+.DS_Store
+.gradio
+"@ | Out-File -FilePath .dockerignore -Encoding utf8

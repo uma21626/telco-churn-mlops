@@ -17,18 +17,19 @@ COPY . .
 
 # Explicitly copy model (in case .dockerignore excluded mlruns)
 # NOTE: destination changed to /app/src/serving/model to match inference.py's path
-COPY src/serving/model /app/src/serving/model
+COPY mlruns/818038774037910443/models/m-3b62448a0966474ba538b825816f7b95/artifacts /app/model
 
 # Copy MLflow run (artifacts + metadata) to the flat /app/model convenience path
-COPY src/serving/model/3b1a41221fc44548aed629fa42b762e0/artifacts/model /app/model
-COPY src/serving/model/3b1a41221fc44548aed629fa42b762e0/artifacts/feature_columns.txt /app/model/feature_columns.txt
-COPY src/serving/model/3b1a41221fc44548aed629fa42b762e0/artifacts/preprocessing.pkl /app/model/preprocessing.pkl
+#COPY src/serving/model/3b1a41221fc44548aed629fa42b762e0/artifacts/model /app/model
+#COPY src/serving/model/3b1a41221fc44548aed629fa42b762e0/artifacts/feature_columns.txt /app/model/feature_columns.txt
+#COPY src/serving/model/3b1a41221fc44548aed629fa42b762e0/artifacts/preprocessing.pkl /app/model/preprocessing.pkl
+COPY mlruns/818038774037910443/7cb3433fe06d4ec098287cae668cdaa3/artifacts/feature_columns.txt /app/model/feature_columns.txt
 
 # make "serving" and "app" importable without the "src." prefix
 # ensures logs are shown in real-time (no buffering).
 # lets you import modules using from app... instead of from src.app....
 ENV PYTHONUNBUFFERED=1 \ 
-    PYTHONPATH=/app/src
+    PYTHONPATH=/app
 
 # 6. Expose FastAPI port
 EXPOSE 8000
