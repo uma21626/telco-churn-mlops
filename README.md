@@ -1,12 +1,16 @@
 # Telco Customer Churn Prediction — End-to-End MLOps Project
 
-A production-ready Machine Learning system that predicts customer churn for telecom companies. Built with a full MLOps pipeline including data validation, feature engineering, model training, experiment tracking, REST API serving, Docker containerization, CI/CD, and AWS deployment.
+A production-ready machine learning system that predicts which telecom customers are likely to churn and exposes the model through a REST API and web UI using a full MLOps pipeline.
 
 ---
 
 ## Purpose
 
-Build and ship a full machine-learning solution for predicting customer churn in a telecom setting — from data prep and modeling to an API + web UI deployed on AWS.
+Customer churn is one of the biggest revenue losses for telecom companies. Retaining an existing customer is significantly cheaper than acquiring a new one, but identifying which customers are about to leave is difficult.
+
+This project focuses on solving that gap by building a complete MLOps pipeline that turns a churn prediction model into a deployable service with reproducible training, experiment tracking, CI/CD and cloud deployment.
+
+The goal was to simulate how real ML systems are built and shipped in production environments.
 
 ### Problem Solved & Benefits
 
@@ -18,7 +22,6 @@ Build and ship a full machine-learning solution for predicting customer churn in
 ---
 
 ## Project Architecture
-
 ```
 telco-churn-mlops/
 ├── src/
